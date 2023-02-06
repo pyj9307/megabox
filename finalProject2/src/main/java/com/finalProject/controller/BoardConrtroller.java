@@ -78,7 +78,7 @@ public class BoardConrtroller {
 		
 		boardService.insertData(dto);
 		
-		mav.setViewName("redirect:/list");
+		mav.setViewName("redirect:/movie/list");
 		
 		return mav;
 		
@@ -127,8 +127,8 @@ public class BoardConrtroller {
 			param = "searchKey=" + searchKey;
 			param+= "&searchValue=" + URLEncoder.encode(searchValue, "UTF-8");
 		}
-		
-		String listUrl = "/list";
+		// String listUrl = "/list";로 되어 있으면 리스트에서 페이지 확인이 안됨 -> String listUrl = "/movie/list"로 변경
+		String listUrl = "/movie/list";
 		
 		if(!param.equals("")) {
 			listUrl += "?" + param;

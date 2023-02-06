@@ -98,73 +98,72 @@
 							<li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기">지점 공지</button></li> -->
 						
 					</ul>
+					<div class="btn-group right">
+						<a href="http://localhost:8080/movie/created" class="button" id="inqBtn" title="1:1 문의하기">1:1 문의하기</a>
+					</div>
 				</div>
 
 				
-<div id="bbsList">
-
-	<!-- <div id="bbsList_title">
-		게 시 판(boot jsp)
-	</div> -->
-	<div id="bbsList_header">
-		<div id="leftHeader">
-		<form action="" method="post" name="searchForm">
-			<select name="searchKey" class="selectField">
-				<option value="subject">제목</option>
-				<option value="name">작성자</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="searchValue" class="textField"/>
-			<input type="button" value=" 검 색 " class="btn2" 	
-			onclick="sendIt()"/>		
-		</form>				
-		</div>
-		<div id="rightHeader">
-			
-		</div>	
-	</div>
-	<div id="bbsList_list">
-		<div id="title">
-			<dl>
-				<dt class="num">번호</dt>
-				<dt class="subject">제목</dt>
-				<dt class="name">작성자</dt>
-				<dt class="created">작성일</dt>
-				<dt class="hitCount">조회수</dt>
-			</dl>
-		</div>
-		<div id="lists">
-		<c:forEach var="dto" items="${lists }"> <%-- BoardDTO : lists와 동일 EL로 받은것  --%>
-			<dl>								<%-- EL로 받은것은 변수명을 게터로받지않고 그대로 사용 그렇다고 DAO의 게터세터를 지우면안됌. --%>
-				<dd class="num">${dto.num }</dd> 
-				<dd class="subject">
-				<a href="${articleUrl }&num=${dto.num }">
-				${dto.subject }</a>
-				</dd>
-				<dd class="name">${dto.name }</dd>
-				<dd class="created">${dto.created }</dd>
-				<dd class="hitCount">${dto.hitCount }</dd>
-			</dl>
-		</c:forEach>
-		</div>
-		<div nav class="pagination" id="footer">
-			<c:if test="${dataCount!=0 }">
-				${pageIndexList }
-			</c:if>
-			<c:if test="${dataCount==0 }">
-				등록된 게시물이 없습니다.
-			</c:if>
-		
-	</div>
-	
-</div>
-
+				<div id="bbsList">
 				
-
-				
+					<!-- <div id="bbsList_title">
+						게 시 판(boot jsp)
+					</div> -->
+					<div id="bbsList_header">
+						<div id="leftHeader">
+						<form action="" method="post" name="searchForm">
+							<select name="searchKey" class="selectField">
+								<option value="subject">제목</option>
+								<option value="name">작성자</option>
+								<option value="content">내용</option>
+							</select>
+							<input type="text" name="searchValue" class="textField"/>
+							<input type="button" value=" 검 색 " class="btn2" 	
+							onclick="sendIt()"/>		
+						</form>				
+						</div>
+						<div id="rightHeader">
+							
+						</div>	
+					</div>
+					<div id="bbsList_list">
+						<div id="title">
+							<dl>
+								<dt class="num">번호</dt>
+								<dt class="subject">제목</dt>
+								<dt class="name">작성자</dt>
+								<dt class="created">작성일</dt>
+								<dt class="hitCount">조회수</dt>
+							</dl>
+						</div>
+						<div id="lists">
+						<c:forEach var="dto" items="${lists }"> <%-- BoardDTO : lists와 동일 EL로 받은것  --%>
+							<dl>								<%-- EL로 받은것은 변수명을 게터로받지않고 그대로 사용 그렇다고 DAO의 게터세터를 지우면안됌. --%>
+								<dd class="num">${dto.num }</dd> 
+								<dd class="subject">
+								<a href="${articleUrl }&num=${dto.num }">
+								${dto.subject }</a>
+								</dd>
+								<dd class="name">${dto.name }</dd>
+								<dd class="created">${dto.created }</dd>
+								<dd class="hitCount">${dto.hitCount }</dd>
+							</dl>
+						</c:forEach>
+						</div>
+						<div nav class="pagination" id="footer">
+							<c:if test="${dataCount!=0 }">
+								${pageIndexList }
+							</c:if>
+							<c:if test="${dataCount==0 }">
+								등록된 게시물이 없습니다.
+							</c:if>
+						
+						</div>
+					
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	<!--// container -->
    
 	<!-- footer -->

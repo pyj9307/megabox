@@ -6,8 +6,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="shortcut icon"
+	href="https://www.megabox.co.kr/static/pc/images/favicon.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게 시 판</title>
+<title>게시판</title>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="/resources/css/list.css"/>
@@ -16,7 +18,9 @@
 </head>
 <body>
 
-
+	<!-- header -->
+	<jsp:include page="../layout/headerWhite.jsp"></jsp:include>
+	<!--// header -->
 
 	<!-- container -->
 	<div class="container has-lnb">
@@ -60,7 +64,7 @@
 			</div>
 
 			<div id="contents" class="">
-				<h2 class="tit">수정</h2>
+				<h2 class="tit">1:1문의</h2>
 
 				<div class="table-wrap">
 					<div class="board-view">
@@ -127,7 +131,9 @@
 	</div>
 	<!--// container -->
 
-
+	<!-- footer -->
+	<jsp:include page="../layout/footerGrey.jsp"></jsp:include>
+    <!-- //footer -->
 
 
 

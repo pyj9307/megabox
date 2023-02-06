@@ -336,8 +336,7 @@ $(function(){
 				<option value="content">내용</option>
 			</select>
 			<input type="text" name="searchValue" class="textField"/>
-			<input type="button" value=" 검 색 " class="btn2" 	
-			onclick="sendIt()"/>		
+			<input type="button" value=" 검 색 " class="btn2" onclick="sendIt()"/>		
 		</form>		
 	</div>
 

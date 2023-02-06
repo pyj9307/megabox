@@ -3,6 +3,7 @@ package com.finalProject.dto;
 import lombok.Data;
 
 // lombok 사용해서 getter/setter 생략 ->pom.xml에 작성(lib추가)
+// FP_MOVIE 디비 연결하는 DTO
 @Data
 public class MovieListDTO {
 	
