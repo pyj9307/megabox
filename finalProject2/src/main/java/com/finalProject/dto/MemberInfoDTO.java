@@ -13,7 +13,7 @@ public class MemberInfoDTO {
 	private String email1;
 	private String email2;
 	private String email;
-//	private String roadfulladdr;
+	private String roadfulladdr;
 	private String birth_year;
 	private String birth_month;
 	private String birth_day;

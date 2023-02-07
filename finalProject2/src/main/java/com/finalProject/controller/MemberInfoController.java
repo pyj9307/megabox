@@ -46,27 +46,27 @@ public class MemberInfoController {
     private final PasswordEncoder passwordEncoder;
 
 
-//	//회원가입 화면 - (완성)
-//	@RequestMapping(value = "/join", method = RequestMethod.GET)
-//	public ModelAndView join() throws Exception {
-//		
-//		ModelAndView mav = new ModelAndView();
-//		//System.out.println("Join페이지 성공");
-//		mav.setViewName("member/join");
-//		
-//		return mav;
-//	}
-    
-    
-	//회원가입 화면 - (shop으로 수정)
-    @GetMapping(value = "/join")
-    public String join(Model model) {
+	//회원가입 화면 - (완성)
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public ModelAndView join() throws Exception {
 		
-    	model.addAttribute("memberInfoDto", new MemberInfoDTO());
-		System.out.println("Join페이지 성공");
-    	return "member/join";
+		ModelAndView mav = new ModelAndView();
+		//System.out.println("Join페이지 성공");
+		mav.setViewName("member/join");
+		
+		return mav;
 	}
-	
+    
+    
+//	//회원가입 화면 - (shop으로 수정)
+//    @GetMapping(value = "/join")
+//    public String join(Model model) {
+//		
+//    	model.addAttribute("memberInfoDto", new MemberInfoDTO());
+//		System.out.println("Join페이지 성공");
+//    	return "member/login";
+//	}
+//	
 	
 	//주소 API
 	@RequestMapping(value = "/jusoPopup")
@@ -114,7 +114,7 @@ public class MemberInfoController {
 //        }
 //
 //		System.out.println("Insert 성공");
-//        return "redirect:/member/main";
+//        return "redirect:/member/login";
 //    }
 	
     // 일단 주석

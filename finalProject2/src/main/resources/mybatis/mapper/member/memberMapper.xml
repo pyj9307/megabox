@@ -5,17 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.finalProject.mapper.MemberMapper">
 
-<!-- 회원가입
+<!-- 회원가입 -->
 <insert id="memberjoin" parameterType="com.finalProject.dto.MemberDTO">
 	insert into moviemember (id,name,pwd,email1,email2,roadfulladdr,birth_year,birth_month,birth_day) values
-	(#{id},#{name},#{pwd},#{email1},#{email2},#{ROADFULLADDR},#{birth_year},#{birth_month},#{birth_day})
-</insert> -->
+	(#{id},#{name},#{pwd},#{email1},#{email2},#{roadfulladdr},#{birth_year},#{birth_month},#{birth_day})
+</insert>
 
-<!-- 회원가입 주소빼고-->
+<!-- 회원가입 주소빼고
 <insert id="memberjoin" parameterType="com.finalProject.dto.MemberDTO">
 	insert into moviemember (id,name,pwd,email1,email2,birth_year,birth_month,birth_day) values
 	(#{id},#{name},#{pwd},#{email1},#{email2},#{birth_year},#{birth_month},#{birth_day})
-</insert>
+</insert> -->
 
 <!-- 로그인(loginChk)- ID, PW 검증 -->
 <select id="memberlogin" parameterType="com.finalProject.dto.MemberDTO" resultType="Integer">
@@ -41,28 +41,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      where id = #{id} and name=#{name}
 </select>
 
-<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기)
+<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) -->
 <select id="getReadData" parameterType="String" resultType="com.finalProject.dto.MemberDTO">
 	select id,name,pwd,email1,email2,roadfulladdr,birth_year,birth_month,birth_day
 	from moviemember where id = #{id}
-</select> -->
+</select>
 
-<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) 주소 빼고 -->
+<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) 주소 빼고
 <select id="getReadData" parameterType="String" resultType="com.finalProject.dto.MemberDTO">
 	select id,name,pwd,email1,email2,birth_year,birth_month,birth_day
 	from moviemember where id = #{id}
-</select>
+</select> -->
 
-<!-- 회원 정보 수정(MyPage)
+<!-- 회원 정보 수정(MyPage) -->
 <update id="updateMember" parameterType="com.finalProject.dto.MemberDTO">
-	update moviemember set pwd=#{pwd},email1=#{email1},email2=#{email2},roadfulladdr=#{roadFullAddr},birth_year=#{birth_year},birth_month=#{birth_month},birth_day=#{birth_day}
+	update moviemember set pwd=#{pwd},email1=#{email1},email2=#{email2},roadfulladdr=#{roadfulladdr},birth_year=#{birth_year},birth_month=#{birth_month},birth_day=#{birth_day}
 	where id = #{id}
-</update> -->
+</update>
 
-<!-- 회원 정보 수정(MyPage) 주소 빼고 -->
+<!-- 회원 정보 수정(MyPage) 주소 빼고
 <update id="updateMember" parameterType="com.finalProject.dto.MemberDTO">
 	update moviemember set pwd=#{pwd},email1=#{email1},email2=#{email2},birth_year=#{birth_year},birth_month=#{birth_month},birth_day=#{birth_day}
 	where id = #{id}
-</update>
+</update> -->
 
 </mapper>

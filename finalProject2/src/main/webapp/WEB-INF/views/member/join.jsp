@@ -2198,7 +2198,7 @@ $(function() {
 			<div class="col-lg-6" align="center" style="width: 400px;">
 
 				<div class="title">Join</div>
-				<form action="" method="post" name="form">
+				<form action="/join_ok" method="post" name="form">
 
 					<div class="" align="left">
 						<label for="id">아이디</label> <input type="text"
@@ -2241,11 +2241,11 @@ $(function() {
 						</select>
 					</div>
 					</br>
-					<!-- <div class="" align="left">
+					<div class="" align="left">
 						<label for="">주소</label> </br> <input type="text" class="form-control3"
-							id="roadFullAddr" name="roadFullAddr" style="width: 400px;" />
+							id="roadfulladdr" name="roadfulladdr" style="width: 400px;" />
 						<button class="button3" type="button" onClick="goPopup();">주소검색</button>
-					</div> -->
+					</div>
 					<div class="" align="left">
 						<label for="">생년월일</label> </br> <select name="birth_year"
 							id="birth_year" style="width: 113px;">
