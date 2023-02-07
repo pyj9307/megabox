@@ -9,8 +9,9 @@ import com.finalProject.dto.BoardDTO2;
 public interface BoardService2 {
 
 	public int maxNum() throws Exception;
-	
-	public void insertData(BoardDTO2 dto) throws Exception;
+
+	// BoardService와 구분되도록 insertData2로 변경
+	public void insertData2(BoardDTO2 dto) throws Exception;
 	
 	public int getDataCount(String searchKey,String searchValue) throws Exception;
 	

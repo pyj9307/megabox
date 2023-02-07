@@ -25,9 +25,9 @@ public class BoardServiceImpl2 implements BoardService2{
 	}//boardMapper에 있는 maxNum
 
 	@Override
-	public void insertData(BoardDTO2 dto) throws Exception {
-		
-		boardMapper2.insertData(dto);
+	// BoardServiceImpl와 구분되도록 insertData2로 변경
+	public void insertData2(BoardDTO2 dto) throws Exception {
+		boardMapper2.insertData2(dto);
 	
 	}
 

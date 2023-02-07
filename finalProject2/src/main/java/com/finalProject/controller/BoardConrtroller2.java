@@ -72,8 +72,9 @@ public class BoardConrtroller2 {
 		
 		dto.setNum(maxNum + 1);
 		dto.setIpAddr(request.getRemoteAddr());
-		
-		boardService2.insertData(dto);
+
+		// BoardConrtroller와 구분되도록 insertData2로 변경
+		boardService2.insertData2(dto);
 		
 		mav.setViewName("redirect:/movie/list2");
 		

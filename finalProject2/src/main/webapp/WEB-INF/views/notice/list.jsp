@@ -88,7 +88,14 @@
 
 			<div id="contents" class="location-fixed">
 				<h2 class="tit">공지사항</h2>
-
+				
+					<div class="mypage-infomation mb30">
+					
+						<div class="btn-group right">
+							<a href="http://localhost:8080/movie/created" class="button" id="inqBtn" title="공지사항 작성">공지사항 작성</a>
+						</div>
+					</div>
+					
 				<div class="tab-block mb30">
 					<ul>
 						<li class="on tabBtn"><button type="button" class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
@@ -98,9 +105,6 @@
 							<li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기">지점 공지</button></li> -->
 						
 					</ul>
-					<div class="btn-group right">
-						<a href="http://localhost:8080/movie/created" class="button" id="inqBtn" title="1:1 문의하기">1:1 문의하기</a>
-					</div>
 				</div>
 
 				

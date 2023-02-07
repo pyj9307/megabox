@@ -76,7 +76,7 @@
 		}
 		f.pwd.value = str;
 		
-		f.action = "<%=cp%>/movie/created2";
+		f.action = "<%=cp%>/movie/created";
 		f.submit();
 		
 	}
@@ -140,7 +140,7 @@
 				<div class="mypage-infomation mb30">
 
 					<div class="btn-group right">
-						<a href="http://localhost:8080/movie/list" class="button purple" id="myQnaBtn" title="나의 문의내역 페이지로 이동">공지사항 목록</a><!-- btn-layer-open -->
+						<a href="http://localhost:8080/movie/list" class="button purple" id="myQnaBtn" title="공지사항 목록으로 이동">공지사항 목록</a><!-- btn-layer-open -->
 					</div>
 				</div>
 

@@ -14,7 +14,8 @@ public interface BoardMapper2 {
 	
 	public int maxNum() throws Exception;
 	
-	public void insertData(BoardDTO2 dto) throws Exception;
+	// BoardMapper와 구분되도록 insertData2로 변경
+	public void insertData2(BoardDTO2 dto) throws Exception;
 	
 	public int getDataCount(String searchKey,String searchValue) throws Exception;
 	
