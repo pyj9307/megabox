@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원가입 -->
 <insert id="memberjoin" parameterType="com.finalProject.dto.MemberDTO">
 	insert into moviemember (id,name,pwd,email1,email2,roadFullAddr,birth_year,birth_month,birth_day) values
-	(#{id},#{name},#{pwd},#{email1},#{email2},#{roadFullAddr},#{birth_year},#{birth_month},#{birth_day})
+	(#{id},#{name},#{pwd},#{email1},#{email2},#{ROADFULLADDR},#{birth_year},#{birth_month},#{birth_day})
 </insert>
 
 <!-- 로그인(loginChk)- ID, PW 검증 -->
