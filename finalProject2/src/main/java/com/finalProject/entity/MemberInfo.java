@@ -1,5 +1,6 @@
 package com.finalProject.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,8 @@ public class MemberInfo {
 	private String email1;
 	private String email2;
 	private String email;
-	private String roadFullAddr;
+    // @Column(name="roadfulladdr")
+//	private String roadfulladdr;
 	private String birth_year;
 	private String birth_month;
 	private String birth_day;
@@ -33,7 +35,7 @@ public class MemberInfo {
 	        member.setEmail(memberInfoDTO.getEmail1());
 	        member.setEmail2(memberInfoDTO.getEmail2());
 	        member.setEmail(memberInfoDTO.getEmail());
-	        member.setRoadFullAddr(memberInfoDTO.getRoadFullAddr());
+//	        member.setRoadfulladdr(memberInfoDTO.getRoadfulladdr());
 	        member.setBirth_year(memberInfoDTO.getBirth_year());
 	        member.setBirth_month(memberInfoDTO.getBirth_month());
 	        member.setBirth_day(memberInfoDTO.getBirth_day());

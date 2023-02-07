@@ -2241,11 +2241,11 @@ $(function() {
 						</select>
 					</div>
 					</br>
-					<div class="" align="left">
+					<!-- <div class="" align="left">
 						<label for="">주소</label> </br> <input type="text" class="form-control3"
 							id="roadFullAddr" name="roadFullAddr" style="width: 400px;" />
 						<button class="button3" type="button" onClick="goPopup();">주소검색</button>
-					</div>
+					</div> -->
 					<div class="" align="left">
 						<label for="">생년월일</label> </br> <select name="birth_year"
 							id="birth_year" style="width: 113px;">
