@@ -8,8 +8,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,31 +26,115 @@ import org.springframework.web.servlet.ModelAndView;
 import com.finalProject.dto.MemberDTO;
 import com.finalProject.service.MemberService;
 
+import lombok.RequiredArgsConstructor;
+
 //로그인 - 회원가입 컨트롤러
 
 // - 로그인(DB비교) / 회원가입(id중복확인) / 마이페이지(회원정보수정) / ID찾기 / PW 찾기 
 
-@RestController("memberController")
 @RequestMapping("/movie")
+@RestController("memberController")
 public class MemberController {
+//	// shop에서 가져온 것
+//    private final MemberInfoService memberInfoService;
+//    private final PasswordEncoder passwordEncoder;
+    
+	//회원가입 화면 - (완성)
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public ModelAndView join() throws Exception {
 		
+		ModelAndView mav = new ModelAndView();
+		//System.out.println("Join페이지 성공");
+		mav.setViewName("member/join");
+		
+		return mav;
+	}
+    
+    
+//	//회원가입 화면 - (shop으로 수정)
+//    @GetMapping(value = "/join")
+//    public String join(Model model) {
+//		
+//    	model.addAttribute("memberInfoDto", new MemberInfoDTO());
+//		System.out.println("Join페이지 성공");
+//    	return "member/join";
+//	}
 	
-	//얘를 호출하면 MemberServiceImpl이 딸려들어옴
-	@Resource
-	private MemberService memberService;
 	
-	//로그인 화면 - (완성)
-	//@RequestMapping(value = "/moviestar/login", method = RequestMethod.GET)
-	@GetMapping("/login")
-	public ModelAndView login() throws Exception {
+	//주소 API
+	@RequestMapping(value = "/jusoPopup")
+	public ModelAndView juso() throws Exception {
 			
 		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("member/jusoPopup");
 			
-		//mav.setViewName("memberLogin");
+		return mav;
+	}
+
+	
+	//회원가입 처리 - (완성)
+	@RequestMapping(value = "/join_ok", method = RequestMethod.POST)
+	public ModelAndView join_ok(MemberDTO dto) throws Exception{
+		System.out.println("Insert 성공");
+		ModelAndView mav = new ModelAndView();
+		
+		memberService.memberJoin(dto);
+		
 		mav.setViewName("member/login");
 		
 		return mav;
 	}
+
+	
+//    // 회원가입 처리 - shop꺼
+//    @PostMapping(value = "/join_ok")
+//    // @Valid 입력 폼에서 유효성 체크 실시
+//    public String newMember(@Valid MemberInfoDTO memberInfoDTO, BindingResult bindingResult, Model model){
+//
+//        if(bindingResult.hasErrors()){
+//            return "member/login";
+//        }
+//
+//        try {
+//        	// createMember 엔티티 클래스에서 정의했던 메서드를 이용해 회원 가입시 편함.
+//            MemberInfo memberInfo = MemberInfo.createMemberInfo(memberInfoDTO, passwordEncoder);
+//            memberInfoService.saveMember(memberInfo);
+//        } catch (IllegalStateException e){
+//            model.addAttribute("errorMessage", e.getMessage());
+//            return "member/login";
+//        }
+//
+//		System.out.println("Insert 성공");
+//        return "redirect:/member/main";
+//    }
+	
+    // 일단 주석
+	//얘를 호출하면 MemberServiceImpl이 딸려들어옴
+	@Resource
+	private MemberService memberService;
+	
+    
+//	//로그인 화면 - (완성)
+//	//@RequestMapping(value = "/moviestar/login", method = RequestMethod.GET)
+//	@GetMapping("/login")
+//	public ModelAndView login() throws Exception {
+//			
+//		ModelAndView mav = new ModelAndView();
+//			
+//		//mav.setViewName("memberLogin");
+//		mav.setViewName("member/login");
+//		
+//		return mav;
+//	}
+	
+    // 로그인 폼 창 - shop꺼
+    @GetMapping(value = "/login")
+    public String loginMember(){
+        return "/member/login";
+    }
+
+
 	
 	//마이 페이지
 	// - 여기에 로그인 된 유저의 회원정보를 불러온다.(getReadData)
@@ -165,44 +255,7 @@ public class MemberController {
 	}
 	
 	
-	//회원가입 화면 - (완성)
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public ModelAndView join() throws Exception {
-		
-		ModelAndView mav = new ModelAndView();
-		//System.out.println("Join페이지 성공");
-		mav.setViewName("member/join");
-		
-		return mav;
-	}
-	
-	
-	//주소 API
-	@RequestMapping(value = "/jusoPopup")
-	public ModelAndView juso() throws Exception {
-			
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("member/jusoPopup");
-			
-		return mav;
-	}
 
-	
-	//회원가입 처리 - (완성)
-	@RequestMapping(value = "/join_ok", method = RequestMethod.POST)
-	public ModelAndView join_ok(MemberDTO dto) throws Exception{
-		System.out.println("Insert 성공");
-		ModelAndView mav = new ModelAndView();
-		
-		memberService.memberJoin(dto);
-		
-		mav.setViewName("member/login");
-		
-		return mav;
-	}
-
-	
 
 	
 	
