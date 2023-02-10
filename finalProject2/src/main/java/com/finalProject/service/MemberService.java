@@ -1,7 +1,6 @@
 package com.finalProject.service;
 
 import java.util.Map;
-
 import com.finalProject.dto.MemberDTO;
 
 public interface MemberService {

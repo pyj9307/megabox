@@ -1,7 +1,10 @@
 package com.finalProject.service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import org.springframework.security.core.userdetails.User;
@@ -9,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.finalProject.dto.MemberInfoDTO;
 import com.finalProject.entity.MemberInfo;
@@ -28,7 +32,8 @@ public class MemberInfoService implements UserDetailsService {
     private final MemberInfoRepository memberInfoRepository;
     
     public MemberInfo saveMemberInfo(MemberInfo memberInfo){
-        validateDuplicateMember(memberInfo);
+    	//validateDuplicateMember 일단 뺌
+    	//validateDuplicateMember(memberInfo);
         return memberInfoRepository.save(memberInfo);
     }
     
@@ -40,12 +45,12 @@ public class MemberInfoService implements UserDetailsService {
     }
     
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String Id) throws UsernameNotFoundException {
         
-		MemberInfo member = memberInfoRepository.findByEmail(email);
+		MemberInfo member = memberInfoRepository.findById(Id);
 
         if(member == null){
-            throw new UsernameNotFoundException(email);
+            throw new UsernameNotFoundException(Id);
         }
 
         return User.builder()
@@ -54,4 +59,21 @@ public class MemberInfoService implements UserDetailsService {
                 .build();
     }
 
+	//회원정보 수정할랬는데 MemberInfo에서 만들어버림;
+//    public Long updateMemberInfo(MemberInfo memberInfo) throws Exception{
+//        
+//        memberInfo = memberInfoRepository.findById(memberInfo.getId())
+//                .orElseThrow(EntityNotFoundException::new);
+//        memberInfo.updatememberInfo(memberInfoDTO);
+//        List<Long> itemImgIds = itemFormDto.getItemImgIds();
+//
+//        //이미지 등록
+//        for(int i=0;i<itemImgFileList.size();i++){
+//            itemImgService.updateItemImg(itemImgIds.get(i),
+//                    itemImgFileList.get(i));
+//        }
+//
+//        return item.getId();
+//    }
+	
 }
