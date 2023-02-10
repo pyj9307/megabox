@@ -17,4 +17,6 @@ public interface MemberInfoRepository extends JpaRepository<MemberInfo, Long> {
 
 	MemberInfo save(User user);
 
+	Object deleteById(String id);
+
 }

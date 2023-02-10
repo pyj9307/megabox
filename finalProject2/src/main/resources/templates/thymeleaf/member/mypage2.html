@@ -1724,6 +1724,37 @@ function jusoCallBack(roadFullAddr){
 		
 	}
     
+        /* 댓글 삭제 
+        commentDelete : function (postsId, commentId) {
+     
+            const con_check = confirm("삭제하시겠습니까?");
+            if (con_check === true) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/api/posts/' + postsId + '/comments/' + commentId,
+                    dataType: 'JSON',
+                }).done(function () {
+                    alert('댓글이 삭제되었습니다.');
+                    window.location.reload();
+                }).fail(function (error) {
+                    alert(JSON.stringify(error));
+                });
+            }
+        }
+    */
+	
+    function deleteMember() {
+		
+    	var f = document.form;
+
+		alert("회원 탈퇴 성공!!!!!");
+		
+		/* request.getContextPath(); 못써서
+		f.action="<%=cp%>/movie/mypage_ok"; */
+		f.action="http://localhost:8080/movie/delete";
+		f.submit();
+		
+	}
 </script>
 
 		<!-- 여기부터 마이페이지 UI(현우) -->
@@ -1947,6 +1978,7 @@ function jusoCallBack(roadFullAddr){
 					</div>
 					</br>
 					<button type="button" id="" class="button1" onclick="sendIt();">수정 완료</button>
+					<button type="button" id="" class="button1" onclick="deleteMember();">회원탈퇴</button>
 					<button type="button" onclick="javascript:history.back();" class="button1">취소</button>
 				</form>
 			</div>

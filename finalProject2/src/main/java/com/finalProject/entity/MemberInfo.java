@@ -89,4 +89,24 @@ public class MemberInfo {
 	        return member;
 		}
 
+		
+//	    // OrderSevice에서 호출해서 왔음.
+//	    // 주문의 상태를 ORDER -> CANCEL 로 상태 변경
+//	    // 상품의 재고 수량을 원래대로 복구
+//	    public void deleteMemberInfo(String id, String name, String pwd, String email1, String email2, String email, String roadfulladdr, String birth_year, String birth_month, String birth_day) {
+//	    	
+//	    	this.name = name;
+//	        this.pwd = pwd;
+//	        this.email1 = email1;
+//	        this.email2 = email2;
+//	        this.email = email;
+//	        this.roadfulladdr = roadfulladdr;
+//	        this.birth_year = birth_year;
+//	        this.birth_month = birth_month;
+//	        this.birth_day = birth_day;
+//	    	
+//	        // 주문 안에 있는 주문상품 각각에 cancel 메소드를 불러와 캔술된 수량만큼 addStock시킴
+//	        MemberInfo memberInfo.cancel();
+//	        }
+//	    }
 }

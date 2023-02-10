@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -155,7 +156,7 @@ public class MemberInfoController {
         return "member/login";
     }
     
-	//마이 페이지 처리(DB에 수정된 값 저장)
+	//마이 페이지 처리(DB에 수정된 값 저장) - 마이바티스
 	@RequestMapping(value = "/mypage_ok2", method = {RequestMethod.POST, RequestMethod.GET}) 
 	public ModelAndView myPage_ok(MemberDTO dto, HttpServletRequest request, HttpServletResponse response
 			,HttpSession session) throws Exception {
@@ -177,6 +178,13 @@ public class MemberInfoController {
 		return mav;
 	}
     
+	// 회원정보 삭제
+	@DeleteMapping("/delete")
+	public String deletePost(@RequestParam final MemberInfo memberInfo) {
+		memberInfoService.deleteMemberInfo(memberInfo);
+		return "redirect:/main";
+	}
+	
 //	//로그인 화면 - (완성)
 //	//@RequestMapping(value = "/moviestar/login", method = RequestMethod.GET)
 //	@GetMapping("/login")

@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -58,22 +59,14 @@ public class MemberInfoService implements UserDetailsService {
                 .password(member.getPwd())
                 .build();
     }
-
-	//회원정보 수정할랬는데 MemberInfo에서 만들어버림;
-//    public Long updateMemberInfo(MemberInfo memberInfo) throws Exception{
-//        
-//        memberInfo = memberInfoRepository.findById(memberInfo.getId())
-//                .orElseThrow(EntityNotFoundException::new);
-//        memberInfo.updatememberInfo(memberInfoDTO);
-//        List<Long> itemImgIds = itemFormDto.getItemImgIds();
-//
-//        //이미지 등록
-//        for(int i=0;i<itemImgFileList.size();i++){
-//            itemImgService.updateItemImg(itemImgIds.get(i),
-//                    itemImgFileList.get(i));
-//        }
-//
-//        return item.getId();
-//    }
+	
+	
+    @Transactional
+    public void deleteMemberInfo(String id) {
+    	MemberInfo memberInfo = memberInfoRepository.findById(id)
+    			.orElseThrow(
+        	new IllegalArgumentException("해당 회원이 없습니다"+id));
+    	memberInfoRepository.delete(memberInfo);
+    }
 	
 }
