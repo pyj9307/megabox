@@ -1,11 +1,14 @@
 package com.finalProject.controller;
 
+import java.net.URLEncoder;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -71,7 +77,7 @@ public class MemberInfoController {
 //	}
     
     
-	//회원가입 화면 - shop에서 가져옴. jpa 함수
+	//회원가입 화면 - shop에서 가져옴.
     @GetMapping(value = "/join")
     public String join(Model model) {
 		System.out.println("회원가입 화면 띄우기 성공");
@@ -134,56 +140,73 @@ public class MemberInfoController {
         return "member/login";
     }
 	
-    // 마이 페이지 처리(DB에 수정된 값 저장) - shop꺼 jpa로 처리.
+    // 마이 페이지 처리(DB에 수정된 값 저장) - jpa로 처리(수정 중)
     @PostMapping(value = "/mypage_ok")
     // @Valid 입력 폼에서 유효성 체크 실시
-    public String updateMember(MemberInfoDTO memberInfoDTO, MemberDTO dto, Model model, HttpSession session) throws Exception{
+    public String updateMember(MemberInfoDTO memberInfoDTO, long longid, ServletRequest request, HttpSession session) throws Exception{
     	
-    	try {
-        	// createMember 엔티티 클래스에서 정의했던 메서드를 이용해 회원 가입시 편함.
-            // MemberInfo memberInfo = MemberInfo.createMemberInfo(memberInfoDTO, passwordEncoder); 패스워드 인코딩 작업
-            MemberInfo memberInfo = MemberInfo.updateMemberInfo(memberInfoDTO);
-            System.out.println("MemberInfo.updateMemberInfo(memberInfoDTO) 성공");
-            
-            memberInfoService.saveMemberInfo(memberInfo);
-            System.out.println("memberInfoService.saveMemberInfo(memberInfo) 성공");
-        } catch (IllegalStateException e){
-            model.addAttribute("errorMessage", e.getMessage());
-            return "member/join";
-        }
+    		longid = Long.parseLong(request.getParameter("longid"));
+            memberInfoService.updateMemberInfo(longid, memberInfoDTO);
+            System.out.println("memberInfoService.updateMemberInfo(longid, memberInfoDTO); 성공");
 
-		System.out.println("Insert 성공");
         return "member/login";
     }
     
-	//마이 페이지 처리(DB에 수정된 값 저장) - 마이바티스
-	@RequestMapping(value = "/mypage_ok2", method = {RequestMethod.POST, RequestMethod.GET}) 
-	public ModelAndView myPage_ok(MemberDTO dto, HttpServletRequest request, HttpServletResponse response
-			,HttpSession session) throws Exception {
-		
-		System.out.println("마이 페이지 처리");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		MemberDTO info=(MemberDTO)session.getAttribute("customInfo");
-		System.out.println("MemberDTO info=(MemberDTO)session.getAttribute(\"customInfo\"); 의 info : "+info);
-		
-		dto.setId(info.getId());
-		System.out.println("dto.setId(info.getId()); 의 dto : "+dto);
-		
-		memberService.updateMember(dto);
-		System.out.println("memberService.updateMember(dto); 의 memberService : "+memberService);
-		
-		mav.setViewName("redirect:/main");
-		return mav;
-	}
+//	//마이 페이지 처리(DB에 수정된 값 저장) - 마이바티스
+//	@RequestMapping(value = "/mypage_ok2", method = {RequestMethod.POST, RequestMethod.GET}) 
+//	public ModelAndView myPage_ok(MemberDTO dto, HttpServletRequest request, HttpServletResponse response
+//			,HttpSession session) throws Exception {
+//		
+//		System.out.println("마이 페이지 처리");
+//		
+//		ModelAndView mav = new ModelAndView();
+//		
+//		MemberDTO info=(MemberDTO)session.getAttribute("customInfo");
+//		System.out.println("MemberDTO info=(MemberDTO)session.getAttribute(\"customInfo\"); 의 info : "+info);
+//		
+//		dto.setId(info.getId());
+//		System.out.println("dto.setId(info.getId()); 의 dto : "+dto);
+//		
+//		memberService.updateMember(dto);
+//		System.out.println("memberService.updateMember(dto); 의 memberService : "+memberService);
+//		
+//		mav.setViewName("redirect:/main");
+//		return mav;
+//	}
     
-	// 회원정보 삭제
-	@DeleteMapping("/delete")
-	public String deletePost(@RequestParam final MemberInfo memberInfo) {
-		memberInfoService.deleteMemberInfo(memberInfo);
+	// 회원정보 삭제(jpa 완료)
+    @PostMapping("/delete")
+	public String deletePost(long longid, ServletRequest request, HttpSession session) throws Exception {	
+    	
+//		System.out.println("회원 탈퇴 처리"); // 메서드 호출 확인
+    	// String형으로 받아오는 longid파라미터 값을 long 형으로 변경.
+    	longid = Long.parseLong(request.getParameter("longid"));
+
+		// 디비에 삭제처리
+    	memberInfoService.deleteMemberInfo(longid);
+    	System.out.println("회원 탈퇴 처리 완료");
+    	
+    	// 세션만료
+		session.invalidate();
+		
 		return "redirect:/main";
 	}
+
+// // 회원정보 삭제 - 마이바티스(안됨)
+//	@RequestMapping(value = "/deleteMember_ok", 
+//			method = {RequestMethod.GET,RequestMethod.POST})
+//	public String deleteMember(HttpServletRequest request, MemberService memberService) throws Exception{
+//
+//		System.out.println("회원 탈퇴 처리");
+//		String id = request.getParameter("id");
+//		System.out.println("request.getParameter ok : "+id);
+//		
+//		memberService.deleteMember(id);
+//		System.out.println("deleteMember ok : ");
+//
+//		return "redirect:/main";
+//		
+//	}
 	
 //	//로그인 화면 - (완성)
 //	//@RequestMapping(value = "/moviestar/login", method = RequestMethod.GET)
@@ -242,7 +265,7 @@ public class MemberInfoController {
     @GetMapping(value = "/mypage")
     public String myPage2() throws Exception{
         return "thymeleaf/member/mypage2";
-       // return "member/mypage";
+//        return "member/mypage";
     }
     
 	//로그인 처리 - (완성)

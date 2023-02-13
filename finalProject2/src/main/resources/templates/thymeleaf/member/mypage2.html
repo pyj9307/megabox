@@ -1747,13 +1747,11 @@ function jusoCallBack(roadFullAddr){
 		
     	var f = document.form;
 
-		alert("회원 탈퇴 성공!!!!!");
-		
 		/* request.getContextPath(); 못써서
 		f.action="<%=cp%>/movie/mypage_ok"; */
 		f.action="http://localhost:8080/movie/delete";
 		f.submit();
-		
+		alert("회원 탈퇴 성공!!!!!");
 	}
 </script>
 
@@ -1773,6 +1771,8 @@ function jusoCallBack(roadFullAddr){
 							</colgroup>
 							<tbody>
 								<tr>
+								<!-- longid를 세션에서 히든으로 가져오는 걸로 -->
+								<input type="hidden" th:value="${session.customInfo.longid}" name="longid" id="longid">
 									<th>아이디</th>
 									<!-- <th><label th:for="id">아이디</label></th> -->
 									<!-- <td>${dto.id }</td> --> 

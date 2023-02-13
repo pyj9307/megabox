@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.finalProject.dto.MemberInfoDTO;
@@ -38,6 +39,16 @@ public class MemberInfoService implements UserDetailsService {
         return memberInfoRepository.save(memberInfo);
     }
     
+	// 회원정보 삭제(수정 완료)
+	public void deleteMemberInfo(long longid) throws Exception {
+	    	// 삭제 시 요청한 장바구니_상품 아이디로 검색해서, 디비에 있는지 조회
+			// 엔티티에 long형의 longid추가하여 이 숫자로 아이디 구분해서 삭제하는 방법
+	        MemberInfo memberInfo = memberInfoRepository.findById(longid)
+	        		.orElseThrow(EntityNotFoundException::new);
+	        // 실제 삭제 로직. (delete) 기본으로 제공하는 로직
+	        memberInfoRepository.delete(memberInfo);
+	    }
+    
     private void validateDuplicateMember(MemberInfo memberInfo){
     	MemberInfo findMemberInfo = memberInfoRepository.findByEmail(memberInfo.getEmail());
         if(findMemberInfo != null){
@@ -45,7 +56,16 @@ public class MemberInfoService implements UserDetailsService {
         }
     }
     
-	@Override
+    // 회원정보 수정(수정 중)
+    public Long updateMemberInfo(long longid, MemberInfoDTO memberInfoDTO) throws Exception{
+
+    	MemberInfo memberInfo = memberInfoRepository.findById(longid)
+                .orElseThrow(EntityNotFoundException::new);
+		memberInfo.updateMemberInfo(memberInfoDTO);
+		
+		return memberInfo.getLongid();
+    }
+    
 	public UserDetails loadUserByUsername(String Id) throws UsernameNotFoundException {
         
 		MemberInfo member = memberInfoRepository.findById(Id);
@@ -59,14 +79,4 @@ public class MemberInfoService implements UserDetailsService {
                 .password(member.getPwd())
                 .build();
     }
-	
-	
-    @Transactional
-    public void deleteMemberInfo(String id) {
-    	MemberInfo memberInfo = memberInfoRepository.findById(id)
-    			.orElseThrow(
-        	new IllegalArgumentException("해당 회원이 없습니다"+id));
-    	memberInfoRepository.delete(memberInfo);
-    }
-	
 }

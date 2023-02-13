@@ -25,5 +25,6 @@ public interface MemberMapper {
 	public void updateMember(MemberDTO dto) throws Exception;
 	
 	//public MemberDTO updateMember(String id) throws Exception;
-	
+
+	public MemberDTO deleteMember(String id) throws Exception;
 }

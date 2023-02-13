@@ -72,6 +72,13 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMember(MemberDTO dto) throws Exception {
 		memberMapper.updateMember(dto);
 	}
+
+	// 마이 페이지(회원정보 삭제)
+	@Override
+	public void deleteMember(String id) throws Exception {
+		memberMapper.deleteMember(id);
+		
+	}
 	
 //	@Override
 //	public MemberDTO updateMember(String id) throws Exception {

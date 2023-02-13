@@ -2032,6 +2032,16 @@ function jusoCallBack(roadFullAddr){
 		
 	}
     
+    function deleteMember() {
+		
+    	var f = document.form;
+
+		/* request.getContextPath(); 못써서
+		f.action="<%=cp%>/movie/mypage_ok"; */
+		f.action="http://localhost:8080/movie/delete";
+		f.submit();
+		alert("회원 탈퇴 성공!!!!!");
+	}
 </script>
 
 		<!-- 여기부터 마이페이지 UI(현우) -->
@@ -2050,18 +2060,18 @@ function jusoCallBack(roadFullAddr){
 							<tbody>
 								<tr>
 									<th>아이디</th>
-									<td>${dto.id } <!-- <input type="text" name="id" id="id" class="type01"> -->
+									<td>${customInfo.id } <!-- <input type="text" name="id" id="id" class="type01"> -->
 									</td>
 								</tr>
 								<tr>
 									<th>이름</th>
-									<td><input type="text" value="${dto.name }" id="name" name="name"> </input></td>
+									<td><input type="text" value="${customInfo.name }" id="name" name="name"> </input></td>
 									<%-- <td>${dto.name }</td> --%>
 								</tr>
 								<tr>
 									<th>패스워드</th>
 									<td><input type="password" name="pwd" id="pwd"
-										value="${dto.pwd }" class="type01"></td>
+										value="${customInfo.pwd }" class="type01"></td>
 								</tr>
 								<tr>
 									<th>패스워드 재확인</th>
@@ -2071,8 +2081,8 @@ function jusoCallBack(roadFullAddr){
 								<tr>
 									<th>이메일</th>
 									<td class="txt_color"><input type="text" name="email1"
-										value="${dto.email1 }" class="type01"> @ <input
-										type="text" name="email2" id="email2" value="${dto.email2 }"
+										value="${customInfo.email1 }" class="type01"> @ <input
+										type="text" name="email2" id="email2" value="${customInfo.email2 }"
 										class="type01"> <select name="email_domain"
 										id="email_domain" class="type02"
 										onchange="javascript: document.getElementById(&#39;email2&#39;).value=this.value;">
@@ -2087,7 +2097,7 @@ function jusoCallBack(roadFullAddr){
 								<tr>
 									<th>주소</th>
 									<td></br> <input type="text" id="roadFullAddr"
-										name="roadFullAddr" value="${dto.roadFullAddr }" size="60" />
+										name="roadFullAddr" value="${customInfo.roadFullAddr }" size="60" />
 										<button type="button" class="button2" onClick="goPopup();">주소검색</button>
 										</br> </br></td>
 								</tr>
@@ -2248,6 +2258,7 @@ function jusoCallBack(roadFullAddr){
 					</div>
 					</br>
 					<button type="button" id="" class="button1" onclick="sendIt();">수정 완료</button>
+					<button type="button" id="" class="button1" onclick="deleteMember();">회원탈퇴</button>
 					<button type="button" onclick="javascript:history.back();" class="button1">취소</button>
 				</form>
 			</div>

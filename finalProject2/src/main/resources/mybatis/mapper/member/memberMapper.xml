@@ -41,9 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      where id = #{id} and name=#{name}
 </select>
 
-<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) -->
+<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) + long형의 longid추가 -->
 <select id="getReadData" parameterType="String" resultType="com.finalProject.dto.MemberDTO">
-	select id,name,pwd,email1,email2,roadfulladdr,birth_year,birth_month,birth_day
+	select longid,id,name,pwd,email1,email2,roadfulladdr,birth_year,birth_month,birth_day
 	from moviemember where id = #{id}
 </select>
 
@@ -64,5 +64,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update moviemember set pwd=#{pwd},email1=#{email1},email2=#{email2},birth_year=#{birth_year},birth_month=#{birth_month},birth_day=#{birth_day}
 	where id = #{id}
 </update> -->
+
+<delete id="deleteMember" parameterType="String">
+	DELETE from moviemember WHERE id = #{id}
+</delete>
 
 </mapper>

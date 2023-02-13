@@ -20,4 +20,7 @@ public interface MemberService {
 	public void updateMember(MemberDTO dto) throws Exception;
 	
 	//public MemberDTO updateMember(String id) throws Exception;
+	
+	public void deleteMember(String id) throws Exception;
+	
 }

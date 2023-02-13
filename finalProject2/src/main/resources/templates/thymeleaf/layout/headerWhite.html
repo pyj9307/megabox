@@ -1,8 +1,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
-      layout:decorate="~{layout/layout}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -41,14 +40,16 @@
 		
 <link rel="stylesheet" href="resources/main_files/megabox.min.css" media="all">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script type="text/javascript" async="" src="resources/main_files/analytics.js.다운로드"></script><script async="" src="resources/main_files/js"></script>
+<script type="text/javascript" async="" src="resources/main_files/analytics.js.다운로드"></script>
+<script async="" src="resources/main_files/js"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-30006739-3');</script>
 
 <!-- 현우(아래꺼 주석하면 main 실행시 404포함 alert창 2개 안뜸 -->
 <!-- <script src="resources/main_files/megabox.api.min.js.다운로드"></script> -->
 <script src="resources/main_files/lozad.min.js.다운로드"></script>
 <script src="resources/main_files/megabox.common.min.js.다운로드"></script>
- <script src="resources/main_files/megabox.netfunnel.min.js.다운로드"></script><script src="resources/main_files/ts.wseq"></script>
+<script src="resources/main_files/megabox.netfunnel.min.js.다운로드"></script>
+<script src="resources/main_files/ts.wseq"></script>
 <script src="resources/main_files/persona.js.다운로드" async=""></script>
 <script src="resources/main_files/ui.common.js.다운로드"></script>
 <script src="resources/main_files/m-ny8Ge9GlYZJI4cgMhnHRaYB3JpsfRgMZ-aSWeaR4SEAM4qWzAZAbZEZkUwWnZPUVNfQ01sOTEtVU9TeHFRAstB2JUHayDnTwPLQdiVB2sg508.js.다운로드"></script>
@@ -88,19 +89,32 @@
             	 	<a href="http://localhost:8080/movie/mypage" title="마이페이지">마이페이지</a>
 					<a href="/booking_1">빠른예매</a>
             	</c:otherwise>	 
-            </c:choose> 
-            <!-- 
-            <div th:if="${session.customInfo.id == null}">
-			  <a th:href="{http://localhost:8080/movie/login}" title="로그인">로그인</a>
-			  <a th:href="{http://localhost:8080/movie/join}" title="회원가입">회원가입</a>
-			  <a th:href="{http://localhost:8080/booking_1}">빠른예매</a>
+            </c:choose>
+            
+            <!-- <div th:if="${session.customInfo.id == null}">
+			  <a href="{http://localhost:8080/movie/login}" title="로그인">로그인</a>
+			  <a href="{http://localhost:8080/movie/join}" title="회원가입">회원가입</a>
+			  <a href="{http://localhost:8080/booking_1}">빠른예매</a>
 			</div>
 			<div th:unless="${session.customInfo.id == null}">
-			  <a th:text="${sessionScope.customInfo.id}님">username</a>
-			  <a th:href="{http://localhost:8080/movie/logout}" title="로그아웃">로그아웃</a>
-			  <a th:href="{http://localhost:8080/movie/mypage}" title="마이페이지">마이페이지</a>
-			  <a th:href="{http://localhost:8080/booking_1}">빠른예매</a>
-			</div>-->
+			  <a text="${session.customInfo.id}님"></a>
+			  <a href="{http://localhost:8080/movie/logout}" title="로그아웃">로그아웃</a>
+			  <a href="{http://localhost:8080/movie/mypage}" title="마이페이지">마이페이지</a>
+			  <a href="{http://localhost:8080/booking_1}">빠른예매</a>
+			</div> -->
+            
+            <!-- 
+             <div th:if="${session.customInfo.id == null}">
+			  <a th:href="@{/movie/login}" th:title="로그인">로그인</a>
+			  <a th:href="@{/movie/join}" th:title="회원가입">회원가입</a>
+			  <a th:href="@{/booking_1}">빠른예매</a>
+			</div>
+			<div th:if="${session.customInfo.id != null}">
+			  <a th:href="#" th:value="${session.customInfo.id} 님"></a>
+			  <a th:href="@{/movie/logout}" th:title="로그아웃">로그아웃</a>
+			  <a th:href="@{/movie/mypage}" th:title="마이페이지">마이페이지</a>
+			  <a th:href="@{/booking_1}">빠른예매</a>
+			</div> -->
             
         </div>
 	</div>

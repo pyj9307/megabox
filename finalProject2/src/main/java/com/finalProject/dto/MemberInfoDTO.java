@@ -8,7 +8,8 @@ import lombok.Data;
 // lombok을 사용하여 getter/setter 생략
 @Data
 public class MemberInfoDTO {
-	
+	// long형의 longid추가
+	private long longid;
 	private String id;
 	private String name;
 	private String pwd;
