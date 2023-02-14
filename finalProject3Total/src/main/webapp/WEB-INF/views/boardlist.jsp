@@ -264,7 +264,7 @@ li.a {
 							<!--  게시판 페이징 -->
 
 							<div class="btn-group right">
-								<a href="http://localhost:8080/movie/created2"
+								<a href="http://localhost:8080/movie/created3"
 									class="button purple" id="myQnaBtn" title="게시판으로 이동">게시판 작성</a>
 								<!-- btn-layer-open -->
 							</div>
