@@ -16,10 +16,6 @@ public interface MemberInfoRepository extends JpaRepository<MemberInfo, Long> {
 	// 일단 shop에서 따온대로 보류.
     MemberInfo findByEmail(String email);
 
-    MemberInfo id(String id);
-
-	MemberInfo save(User user);
-
 	// long형의 longid추가하여 이 숫자로 아이디 구분해서 삭제하는 방법
 	public void deleteById(long longId);
 

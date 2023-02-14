@@ -56,7 +56,7 @@ public class MemberInfoService implements UserDetailsService {
         }
     }
     
-    // 회원정보 수정(수정 중)
+    // 회원정보 수정(완료)
     public Long updateMemberInfo(long longid, MemberInfoDTO memberInfoDTO) throws Exception{
 
     	MemberInfo memberInfo = memberInfoRepository.findById(longid)
