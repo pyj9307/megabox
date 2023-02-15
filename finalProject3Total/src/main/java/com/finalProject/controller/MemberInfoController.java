@@ -80,7 +80,7 @@ public class MemberInfoController {
 		String id = request.getParameter("id");
 		// memberDTO형으로 유저 정보 가져오기
 		MemberDTO dto = memberService.getReadData(id); 
-		// 세션에 customInfo라는 이름으로 매핑 형태로 저장. jsp에서 ${customInfo.키} 형태로 불러오기
+		// 세션에 customInfo라는 이름으로 매핑 형태로 저장. jsp에서 ${sessionScope.customInfo.키} 형태로 불러오기
 		session.setAttribute("customInfo", dto);
 		// 아이디 저장 체크박스 설정.
 		if(rememberId) {
@@ -103,7 +103,6 @@ public class MemberInfoController {
 	//회원가입 화면 - String형으로 뷰 주소 출력하기.
     @GetMapping(value = "/join")
     public String join() {
-		System.out.println("회원가입 화면 띄우기 성공");
     	return "member/join";
 	}
 	

@@ -25,7 +25,6 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 //@Transactional 클래스안에 메서드들 중 한개라도 작동이 안되면 전체 메서드를 롤백한다.
-//보통 서비스 할 때 Transactional을 씀
 @Transactional
 //@RequiredArgsConstructor : not null, final이 붙은 멤버도 생성자로 생성해달라. 롬복 라이브러리에 있는 에너테이션
 @RequiredArgsConstructor
@@ -35,7 +34,7 @@ public class MemberInfoService implements UserDetailsService {
 
 	// 회원정보 저장
     public MemberInfo saveMemberInfo(MemberInfo memberInfo){
-    	// Repository에서 지원하는 기능인 save메서드를 사용해 디비에 저장
+    	// CRUDRepository에서 지원하는 기능인 save메서드를 사용해 디비에 저장
         return memberInfoRepository.save(memberInfo);
     }
     
