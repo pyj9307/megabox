@@ -76,7 +76,7 @@ function jusoCallBack(roadFullAddr){
 
 <!-- 회원가입 빈칸 검증 -->
 <script type="text/javascript">    
-    function joinCheck() {		
+    function joinCheck() {
     	var f = document.form;
     	//아이디
     	if(!f.id.value) {

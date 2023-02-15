@@ -21,11 +21,12 @@ function sendIt(){
 	}
 
 	//비밀번호 input창에서 엔터눌렀을 경우 로그인 버튼 눌리게
-	function enterkey() {
+ 	function enterkey() {
 		if (window.event.keyCode == 13) {
 			$("#loginBtn").click();
 		}
-	}	
+	}
+	
 </script>
 
 <script type="text/javascript">
@@ -106,7 +107,7 @@ function showRequest() {
 				</br>
 				<div class="" align="left">
 					<label class="login_title" for="">비밀번호</label>
-					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="패스워드를 입력하세요" onkeydown="javascript:if(event.keyCode == 13) {login();}">
+					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="패스워드를 입력하세요" onkeydown="javascript:if(event.keyCode == 13) {enterkey();}">
 				</div>
 				</br>
 				<div class="" align="left">
