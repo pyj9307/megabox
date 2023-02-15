@@ -110,8 +110,8 @@ public class BoardlistServiceImpl implements BoardlistService {
 		List<String> properties = new ArrayList<String>();
 		Order o1 = new Order(Direction.DESC, "reply");
 		Order o2 = new Order(Direction.ASC, "replystep");
-		PageRequest.of(curPage, 3, Sort.by(Sort.Direction.DESC, "reply").and(Sort.by(Sort.Direction.ASC, "replystep")));
-		PageRequest pr = PageRequest.of(curPage, 3,
+		PageRequest.of(curPage, 10, Sort.by(Sort.Direction.DESC, "reply").and(Sort.by(Sort.Direction.ASC, "replystep")));
+		PageRequest pr = PageRequest.of(curPage, 10,
 				Sort.by(Sort.Direction.DESC, "reply").and(Sort.by(Sort.Direction.ASC, "replystep")));
 		
 		
