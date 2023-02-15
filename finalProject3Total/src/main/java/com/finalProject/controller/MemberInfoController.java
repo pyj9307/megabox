@@ -50,7 +50,7 @@ import lombok.RequiredArgsConstructor;
 
 //로그인 - 회원가입 컨트롤러
 
-// - 로그인(DB비교) / 회원가입(id중복확인) / 마이페이지(회원정보수정) / ID찾기 / PW 찾기 
+// - 로그인(DB비교) / 회원가입(id중복확인) / 마이페이지(회원정보수정) / 마이페이지(회원탈퇴) / ID찾기 / PW 찾기 
 
 @RequestMapping("/movie")
 @Controller
