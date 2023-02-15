@@ -56,7 +56,7 @@ public class BoardlistConrtroller2 {
 
 		// jsp아래 board.jsp 호출
 
-		return new ModelAndView("boardlist2");
+		return new ModelAndView("notice/boardlist2");
 
 	}
 

@@ -71,7 +71,7 @@ li.a {
 
 
 	<!-- header -->
-	<jsp:include page="layout/headerWhite.jsp"></jsp:include>
+	<jsp:include page="../layout/headerWhite.jsp"></jsp:include>
 	<!--// header -->
 
 
@@ -94,32 +94,34 @@ li.a {
 
 			<!-- 네비바 -->
 			<div class="lnb-area addchat location-fixed">
-				<nav id="lnb">
-				<p class="tit">
-					<a href="https://www.megabox.co.kr/support" title="고객센터">고객센터</a>
-				</p>
-				<ul>
-					<li><a href="http://localhost:8080/movie/article" title="고객센터 홈">고객센터
-							홈</a></li>
+					<nav id="lnb" class="ty2">
+						<p class="tit"><a href="#" title="고객센터">고객센터</a></p>
+						<ul>
+							<li><a href="/movie/customer" title="고객센터 홈">고객센터</a></li>
+							<li ><a href="#" title="자주 묻는 질문">자주 묻는 질문</a></li>
+							<!-- <li class="on"><a href="/movie/created" title="공지사항">공지사항(원본)</a></li> -->
+							<li ><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
+							<li><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
+							<li class="on"><a href="/boardlist" title="게시판">게시판</a></li>
+							<!-- <li><a href="http://localhost:8080/movie/created" title="게시판(created)">게시판(원본)</a></li> -->
+							<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
+							<li><a href="#" title="분실물 문의">분실물 문의</a></li>
+							<li><a href="#" title="이용약관">이용약관</a></li>
+							<li><a href="#" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
+							<li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+							<li><a href="#" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
+						</ul>
 
-					<li><a href="http://localhost:8080/movie/list" title="공지사항">공지사항</a></li>
-					<li><a href="http://localhost:8080/movie/created" title="1:1문의">1:1문의</a></li>
-					<li class="on"><a href="http://localhost:8080/movie/boardlist"
-						title="게시판">게시판</a></li>
-
-				</ul>
-
-				<!-- 고객센터 메뉴일때만 출력 -->
-				<div class="left-customer-info">
-					<p class="tit">
-						메가박스 고객센터 <span>Dream center</span>
-					</p>
-					<p class="time">
-						<i class="iconset ico-clock"></i> 10:00~19:00
-					</p>
+						<!-- 고객센터 메뉴일때만 출력 -->
+						<div class="left-customer-info">
+							<p class="tit">
+								메가박스 고객센터
+								<span>Dream center</span>
+							</p>
+							<p class="time"><i class="iconset ico-clock"></i> 10:00~19:00</p>
+						</div>
+					</nav>
 				</div>
-				</nav>
-			</div>
 
 
 			<!--  클래스 타입을 location-fixed 로 설정하면 변경 가능하다 -->
@@ -133,10 +135,10 @@ li.a {
 								class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
 						<!-- 이후 버튼 순서대로 출력 -->
 						<li class="tabBtn"><button type="button" class="btn"
-								data-no="81" title="메가박스 공지 보기">메가박스 공지</button></li>
+								data-no="81" title="메가박스 공지 보기">자유게시판</button></li>
 
 						<li class="tabBtn"><button type="button" class="btn"
-								data-no="82" title="지점 공지 보기">지점 공지</button></li>
+								data-no="82" title="지점 공지 보기">영화 후기</button></li>
 
 					</ul>
 				</div>
@@ -240,7 +242,7 @@ li.a {
 										<button type="button"
 											
 											ng-click="ctrl.edit(boardlist.id)"
-											class="btn btn-success custom-width"><a href="http://localhost:8080/boardlist2" 
+											class="btn btn-success custom-width"><a href="/boardlist2" 
 											 title="게시판으로 이동">수정하기</a>
 											</button>
 									</div>
@@ -264,7 +266,7 @@ li.a {
 							<!--  게시판 페이징 -->
 
 							<div class="btn-group right">
-								<a href="http://localhost:8080/movie/created3"
+								<a href="/movie/created3"
 									class="button purple" id="myQnaBtn" title="게시판으로 이동">게시판 작성</a>
 								<!-- btn-layer-open -->
 							</div>
@@ -313,7 +315,7 @@ li.a {
 		<!--// container -->
 
 		<!-- footer -->
-		<jsp:include page="layout/footerGrey.jsp"></jsp:include>
+		<jsp:include page="../layout/footerGrey.jsp"></jsp:include>
 		<!-- //footer -->
 
 

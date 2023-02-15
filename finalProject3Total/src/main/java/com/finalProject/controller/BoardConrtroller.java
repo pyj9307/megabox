@@ -40,7 +40,7 @@ public class BoardConrtroller {
 	
 	@Resource
 	private BoardService boardService; //얘를 호출하면 BoardServiceImpl이 딸려들어옴
-
+	
 	@Autowired
 	MyUtil myUtil; //@Service로 구현된 MyUtil을 불러온것
 	
@@ -90,7 +90,7 @@ public class BoardConrtroller {
 	public ModelAndView list(BoardDTO dto, HttpServletRequest request) throws Exception{
 		
 		String pageNum = request.getParameter("pageNum");//문자만 따온건가?
-
+		
 		int currentPage = 1;
 		
 		if(pageNum!=null)
@@ -176,11 +176,10 @@ public class BoardConrtroller {
 
 		if(searchValue!=null) {
 			searchValue = URLDecoder.decode(searchValue, "UTF-8");
-
 		}
-
+		
 		boardService.updateHitCount(num);
-
+		
 		//전체데이터 읽어오기
 		BoardDTO dto = boardService.getReadData(num);
 
@@ -188,7 +187,6 @@ public class BoardConrtroller {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/list?pageNum=" + pageNum);
 			return mav;
-
 		}
 
 		int lineSu = dto.getContent().split("\n").length;
@@ -203,7 +201,6 @@ public class BoardConrtroller {
 					URLEncoder.encode(searchValue, "UTF-8");
 
 		}
-
 
 		ModelAndView mav = new ModelAndView();
 
@@ -285,9 +282,9 @@ public class BoardConrtroller {
 			param += "&searchKey=" + searchKey;
 			param += "&searchValue=" + 
 					URLEncoder.encode(searchValue, "UTF-8");
-
+			
 		}
-
+		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("redirect:/movie/list?" + param);
@@ -305,17 +302,17 @@ public class BoardConrtroller {
 		String pageNum = request.getParameter("pageNum");
 		String searchKey = request.getParameter("searchKey");
 		String searchValue = request.getParameter("searchValue");
-
+		
 		boardService.deleteData(num);
-
+		
 		String param = "pageNum=" + pageNum;
-
+		
 		if(searchValue!=null&&!searchValue.equals("")) {
-
+			
 			param += "&searchKey=" + searchKey;
 			param += "&searchValue=" + 
 					URLEncoder.encode(searchValue, "UTF-8");
-
+			
 		}
 		
 		ModelAndView mav = new ModelAndView();

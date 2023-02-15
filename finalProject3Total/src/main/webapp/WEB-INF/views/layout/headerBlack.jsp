@@ -63,7 +63,7 @@
         <div class="left-link">
             <a href="/benefits/vipLounge" title="VIP LOUNGE">VIP LOUNGE</a>
             <a href="/benefits/memberShip" title="멤버십">멤버십</a>
-            <a href="/movie/list" title="고객센터">고객센터</a>
+            <a href="/movie/customer" title="고객센터">고객센터</a>
         </div>
 
         <div class="right-link">

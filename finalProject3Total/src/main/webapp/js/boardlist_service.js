@@ -12,7 +12,7 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 
 		list: function(curPage) {
 
-			return $http.get('http://localhost:80/boardlist/' + curPage)
+			return $http.get('/boardlist/' + curPage)
 
 				.then(
 
@@ -38,7 +38,7 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 
 		create: function(boardlist) {
 
-			return $http.post('http://localhost:80/boardlist/', boardlist)
+			return $http.post('/boardlist/', boardlist)
 
 				.then(
 
@@ -46,13 +46,14 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 
 						console.log("[service:create]server call  suceeded.");
 
+                            console.log(" response.data 호출성공")
 						return response.data;
 
 					},
 
 					function(errResponse) {
 
-						console.error('Error while creating article');
+						console.error('Error while creating boardlist');
 
 						return $q.reject(errResponse);
 
@@ -64,7 +65,7 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 
 		delete: function(id) {
 
-			return $http.delete('http://localhost:80/boardlist/delete/' + id)
+			return $http.delete('/boardlist/delete/' + id)
 
 				.then(
 
@@ -87,7 +88,7 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 		},
 		update: function(boardlist, id) {
 
-			return $http.put('http://localhost:80/boardlist/' + id, boardlist)
+			return $http.put('/boardlist/' + id, boardlist)
 
 				.then(
 

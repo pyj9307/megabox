@@ -1,223 +1,228 @@
 'use strict';
 
- 
+
 
 App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
-      function($scope, BoardlistService) {
+	function($scope, BoardlistService) {
 
-          var self = this;
+		// 함수 선언
+		var self = this;
 
-          self.boardlist={id:null, name:'',passwd:'',title:'',content:''};
+		self.boardlist = { id: null, name: '', passwd: '', title: '', content: '' };
 
-          self.page=[];
+		self.page = [];
 
-              
 
-          //리스트 보기
 
-          self.list = function(curPage){
+		//리스트 보기
 
-              BoardlistService.list(curPage)
+		self.list = function(curPage) {
 
-              .then(
+			BoardlistService.list(curPage)
 
-                 function(data) {
+				.then(
 
-                     self.page = data;
+					function(data) {
 
-                     console.log("[controller:list]", self.page);
+						self.page = data;
 
-                     //alert("목록보기 성공!");
+						console.log("[controller:list]", self.page);
 
-                 },
+						//alert("목록보기 성공!");
 
-                 function(errResponse){
+					},
 
-                     console.error('Error while fetching page...');
+					function(errResponse) {
 
-                 }
+						console.error('Error while fetching page...');
 
-              );
+					}
 
-          };  
+				);
 
-         
+		};
 
-          //글 입력
 
-          self.create = function(boardlist) {
 
-              BoardlistService.create(boardlist)
+		//글 입력
 
-              .then(
+		self.create = function(boardlist) {
 
-                  function() {
+			BoardlistService.create(boardlist)
 
-                    alert("Save OK!");
+				.then(
 
-                    self.list(0);
+					function() {
 
-                  },
+						alert("Save OK!");
 
-                  function(errResponse){
 
-                     console.error('Error while creating Article.');
+						self.list(0);
 
-                  }
+						history.back(-1);
+					},
 
-               );   
+					function(errResponse) {
 
-           };
+						console.error('Error while creating Article.');
 
-       
-          self.list(0);
+					}
 
-          //글 수정
+				);
 
+		};
 
-           self.update = function(boardlist, id){
 
-               BoardService.update(boardlist, id)
+		self.list(0);
 
-                       .then(
+		//글 수정
 
-                                         function() {
 
-                                       alert("Update OK!");
+		self.update = function(boardlist, id) {
 
-                                       self.list(self.page.number);  //현재 페이지 리로드
+			BoardService.update(boardlist, id)
 
-                               },
+				.then(
 
-                               function(errResponse){
+					function() {
 
-                                    console.error('Error while updating User.');
+						alert("Update OK!");
 
-                               }
+						self.list(self.page.number);  //현재 페이지 리로드
+						
+					},
 
-                   );
 
-           };
+					function(errResponse) {
 
+						console.error('Error while updating User.');
 
+					}
 
+				);
 
+		};
 
 
 
-          // ADD or UPDATE 버튼 클릭
 
-          self.submit = function() {
 
-              if(self.boardlist.id===null){                     
 
-                  self.create(self.boardlist);         
 
-                  console.log("[controller:create]", self.boardlist);
+		// ADD or UPDATE 버튼 클릭
 
-              }else{
+		self.submit = function() {
 
-                  self.update(self.boardlist, self.boardlist.id);
+			if (self.boardlist.id === null) {
 
-                  console.log('Article updated with id ', self.boardlist.id);
+				self.create(self.boardlist);
 
-              }
 
-              self.reset();             
+				console.log("[controller:create]", self.boardlist);
+				
+			} else {
 
-          };  
+				self.update(self.boardlist, self.boardlist.id);
 
-         
+				console.log('Article updated with id ', self.boardlist.id);
 
-          //글조회
+			}
 
-          self.edit = function(id){
+			self.reset();
 
+		};
 
-              console.log('[controller:edit]', id);
 
-              console.log("3333", self.page);
 
-              for(var i = 0; i < self.page.content.length; i++){
+		//글조회
 
-                  if(self.page.content[i].id === id) {
+		self.edit = function(id) {
 
-                     self.boardlist = angular.copy(self.page.content[i]);
 
-                     console.log("[read article]", self.boardlist);
+			console.log('[controller:edit]', id);
 
-                     break;
+			console.log("3333", self.page);
 
-                  }
+			for (var i = 0; i < self.page.content.length; i++) {
 
-              }
+				if (self.page.content[i].id === id) {
 
-          }; 
+					self.boardlist = angular.copy(self.page.content[i]);
 
-         
-//글 삭제
+					console.log("[read article]", self.boardlist);
 
-           self.delete = function(id){
+					break;
 
-               BoardlistService.delete(id)
+				}
 
-                       .then(
+			}
 
-                               function() {
+		};
 
-                                        alert("Delete OK!");
 
-                                        self.list(self.page.number);  //현재 페이지 리로드
+		//글 삭제
 
-                               },
+		self.delete = function(id) {
 
-                               function(errResponse){
+			BoardlistService.delete(id)
 
-                                    console.error('삭제실패.');
+				.then(
 
-                               }
+					function() {
 
-                   );
+						alert("Delete OK!");
 
-           };
-          //글 삭제
+						self.list(self.page.number);  //현재 페이지 리로드
+						history.back(-1);
+					},
 
-          self.remove = function(id){
+					function(errResponse) {
 
-          if (confirm('삭제하시겠습니까?')) {
-	 BoardlistService.delete(id)
- console.log('controller service call later');
-                      //console.log('[controller:remove]', id);
+						console.error('삭제실패.');
 
-                  //글입력(수정)화면 CLEAR
+					}
 
-                  if(self.boardlist.id === id) { 
+				);
 
-                     self.reset();
+		};
+		//글 삭제
 
-                  }
+		self.remove = function(id) {
 
-                  self.delete(id);
+			if (confirm('삭제하시겠습니까?')) {
+				BoardlistService.delete(id)
+				console.log('controller service call later');
+				//console.log('[controller:remove]', id);
 
-                    } else {
+				//글입력(수정)화면 CLEAR
 
-                        return;
+				if (self.boardlist.id === id) {
 
-                    }             
+					self.reset();
 
-          };
+				}
 
-         
+				self.delete(id);
 
-          self.reset = function(){
+			} else {
 
-          self.boardlist={id:null, name:'',passwd:'',title:'',content:''};
+				return;
 
-              $scope.myForm.$setPristine(); //reset Form
+			}
 
-          };
+		};
 
-         
 
-}]);
+
+		self.reset = function() {
+
+			self.boardlist = { id: null, name: '', passwd: '', title: '', content: '' };
+
+			$scope.myForm.$setPristine(); //reset Form
+
+		};
+
+
+
+	}]);

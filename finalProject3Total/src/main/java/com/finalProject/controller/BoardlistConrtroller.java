@@ -56,7 +56,7 @@ public class BoardlistConrtroller {
 
 		// jsp아래 board.jsp 호출
 		System.out.println("boardlist 호출");
-		return new ModelAndView("boardlist");
+		return new ModelAndView("notice/boardlist");
 
 	}
 

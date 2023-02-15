@@ -97,6 +97,7 @@
 							<li ><a href="#" title="자주 묻는 질문">자주 묻는 질문</a></li>
 							<li class=""><a href="/movie/created" title="공지사항">공지사항</a></li>
 							<li class="on"><a href="/movie/list2" title="1:1문의">1:1문의</a></li>
+							<li><a href="/boardlist" title="게시판">게시판</a></li>
 							<li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
 							<li><a href="#" title="분실물 문의">분실물 문의</a></li>
 							<li><a href="#" title="이용약관">이용약관</a></li>
