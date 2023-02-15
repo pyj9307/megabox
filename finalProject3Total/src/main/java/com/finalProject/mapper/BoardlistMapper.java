@@ -20,13 +20,13 @@ public interface BoardlistMapper {
 	
 	public List<BoardlistDTO> getLists(int start,int end,String searchKey,String searchValue) throws Exception;
 
-	public BoardlistDTO getReadData(int num) throws Exception;
+	public BoardlistDTO getReadData(int id) throws Exception;
 	
-	public void updateHitCount(int num) throws Exception;
+	public void updateHitCount(int id) throws Exception;
 	
 	public void updateData(BoardlistDTO dto) throws Exception;
 	
-	public void deleteData(int num) throws Exception;
+	public void deleteData(int id) throws Exception;
 	
 	
 }

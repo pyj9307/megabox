@@ -2,6 +2,7 @@ package com.finalProject.controller;
 
 
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.finalProject.dto.BoardDTO;
 import com.finalProject.dto.BoardlistDTO;
 import com.finalProject.entity.Boardlist;
 
@@ -137,6 +138,20 @@ public class BoardlistConrtroller2 {
 		 * ResponseEntity<Void>(HttpStatus.NO_CONTENT); }
 		 */
 
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	 
 	
 }

@@ -27,7 +27,8 @@ String cp = request.getContextPath();
 <script type="text/javascript" src="/resources/js/util.js"></script>
 <script type="text/javascript">
 
-	function sendIt(){
+<%-- function sendIt(){
+	 원래 엔티티에서 생성된 테이블 안의 데이터를 받아 게시판 페이지 보내기 위한 기능의 자바 함수 
 		
 		var f = document.myForm;
 		
@@ -85,13 +86,15 @@ String cp = request.getContextPath();
 	/movie/created2";
 		f.submit();
 
-	}
+	} --%>
 </script>
 </head>
 <body ng-app="myBoard" class="ng-cloak"
 	ng-controller="BoardlistController as ctrl">
+	<!-- ng-app이란 앞서 설명한 자바스크립트 app을 불러와 페이지에 적용시키는 것이다 -->
 <!-- header -->
 <jsp:include page="../layout/headerWhite.jsp"></jsp:include>
+<!-- 페이지에 레이아웃을 적용 시키기 위한 쿼리 -->
 <!--// header -->
 
 <!-- container -->

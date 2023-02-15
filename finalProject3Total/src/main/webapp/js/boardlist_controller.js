@@ -6,35 +6,33 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
 	function($scope, BoardlistService) {
 
-		// 함수 선언
+		// this를 함수 선언
 		var self = this;
 
 		self.boardlist = { id: null, name: '', passwd: '', title: '', content: '' };
+		// id는 null 값 그 외에는 입력값
 
 		self.page = [];
-
+		// 초기값 설정을 위하여
 
 
 		//리스트 보기
-
 		self.list = function(curPage) {
 
 			BoardlistService.list(curPage)
-
+				// 현재 보드리스트의 리스트 기능
 				.then(
 
 					function(data) {
-
+						// 불러오기 성공
 						self.page = data;
-
 						console.log("[controller:list]", self.page);
-
 						//alert("목록보기 성공!");
 
 					},
 
 					function(errResponse) {
-
+						// 불러오기 실패
 						console.error('Error while fetching page...');
 
 					}
@@ -58,9 +56,12 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 						alert("Save OK!");
 
 
-						self.list(0);
+						self.list(0); 
+						// 현제 페이지 그대로
 
 						history.back(-1);
+						// 입력 성공시 한페이지 뒤로가기 기능
+
 					},
 
 					function(errResponse) {
@@ -89,8 +90,10 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
 						alert("Update OK!");
 
-						self.list(self.page.number);  //현재 페이지 리로드
-						
+						self.list(self.page.number);  
+						//현재 페이지 리로드
+						history.back(-1);
+						// 페이지 리로드후 한페이지 뒤로가기
 					},
 
 
@@ -120,7 +123,7 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
 
 				console.log("[controller:create]", self.boardlist);
-				
+
 			} else {
 
 				self.update(self.boardlist, self.boardlist.id);
@@ -149,6 +152,7 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 				if (self.page.content[i].id === id) {
 
 					self.boardlist = angular.copy(self.page.content[i]);
+					// self.page.content[i] 객체를 복사하여 유지시킨다
 
 					console.log("[read article]", self.boardlist);
 
@@ -219,7 +223,8 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
 			self.boardlist = { id: null, name: '', passwd: '', title: '', content: '' };
 
-			$scope.myForm.$setPristine(); //reset Form
+			$scope.myForm.$setPristine(); 
+			//reset Form
 
 		};
 

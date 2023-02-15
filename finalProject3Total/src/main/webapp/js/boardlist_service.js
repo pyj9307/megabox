@@ -46,14 +46,13 @@ App.factory('BoardlistService', ['$http', '$q', function($http, $q) {
 
 						console.log("[service:create]server call  suceeded.");
 
-                            console.log(" response.data 호출성공")
 						return response.data;
 
 					},
 
 					function(errResponse) {
 
-						console.error('Error while creating boardlist');
+						console.error('Error while creating article');
 
 						return $q.reject(errResponse);
 

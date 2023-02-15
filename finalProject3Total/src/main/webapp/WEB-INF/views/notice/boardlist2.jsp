@@ -44,13 +44,13 @@ String cp = request.getContextPath();
 
 <script type="text/javascript">
 
-	function sendIt(){
+	<%-- function sendIt(){
 		
 		var f = document.searchForm;
 		f.action = "<%=cp%>
 	/movie/boardlist";
 		f.submit();
-	}
+	} --%>
 </script>
 
 
@@ -244,14 +244,10 @@ li.a {
 
 											<th align="center">조회수</th>
 
-
-
-
-
-
 											<th align="center">조회/삭제</th>
 
-
+	<!-- 제일 아쉬운 부분이며 AJAX비동기식으로 버튼 클릭시 데이터를 다음 페이지로 자동으로 넣어 구현 하고 싶었으나
+											페이지에 데이터를 불러오는것 까지 성공하였지만 한 페이지 안에서 고유 ID값 마다 정보를 다르게 불러오는것에서 실패 하였다. -->
 
 
 										</tr>

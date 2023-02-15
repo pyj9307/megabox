@@ -42,6 +42,7 @@ public class BoardConrtroller3 {
 	MyUtil myUtil; //@Service로 구현된 MyUtil을 불러온것
 	
 	@RequestMapping(value = "/3")
+	
 	public ModelAndView index() throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
@@ -51,7 +52,7 @@ public class BoardConrtroller3 {
 		return mav;
 	}
 	
-	// 1대1 문의 글작성
+	// 게시판 글작성
 	@RequestMapping(value = "/created3", method = RequestMethod.GET)
 	public ModelAndView created() throws Exception{
 		
@@ -62,7 +63,7 @@ public class BoardConrtroller3 {
 		return mav;
 	}
 	
-	// 1eo1 문의 글작성 처리
+	// 게시판 글작성 처리
 	@RequestMapping(value = "/created3", method = RequestMethod.POST)
 	public ModelAndView created_ok(BoardDTO2 dto, HttpServletRequest request) throws Exception{
 		
