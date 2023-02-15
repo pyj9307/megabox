@@ -32,22 +32,30 @@ import lombok.RequiredArgsConstructor;
 public class MemberInfoService implements UserDetailsService {
 	
     private final MemberInfoRepository memberInfoRepository;
-    
+
+	// 회원정보 저장
     public MemberInfo saveMemberInfo(MemberInfo memberInfo){
-    	//validateDuplicateMember 일단 뺌
-    	//validateDuplicateMember(memberInfo);
+    	// Repository에서 지원하는 기능인 save메서드를 사용해 디비에 저장
         return memberInfoRepository.save(memberInfo);
     }
     
-	// 회원정보 삭제(수정 완료)
+	// 회원정보 삭제
 	public void deleteMemberInfo(long longid) throws Exception {
-	    	// 삭제 시 요청한 장바구니_상품 아이디로 검색해서, 디비에 있는지 조회
-			// 엔티티에 long형의 longid추가하여 이 숫자로 아이디 구분해서 삭제하는 방법
+			// 엔티티에 long형의 longid 숫자로 아이디 구분해서 삭제하는 방법
 	        MemberInfo memberInfo = memberInfoRepository.findById(longid)
 	        		.orElseThrow(EntityNotFoundException::new);
-	        // 실제 삭제 로직. (delete) 기본으로 제공하는 로직
+	    	// Repository에서 지원하는 기능인 delete메서드를 사용해 디비에 삭제
 	        memberInfoRepository.delete(memberInfo);
 	    }
+
+    // 회원정보 수정
+    public Long updateMemberInfo(long longid, MemberInfoDTO memberInfoDTO) throws Exception{
+		// 엔티티에 long형의 longid 숫자로 아이디 구분해서 업데이트하는 방법
+    	MemberInfo memberInfo = memberInfoRepository.findById(longid)
+                .orElseThrow(EntityNotFoundException::new);
+		memberInfo.updateMemberInfo(memberInfoDTO);
+		return memberInfo.getLongid();
+    }
     
     private void validateDuplicateMember(MemberInfo memberInfo){
     	MemberInfo findMemberInfo = memberInfoRepository.findByEmail(memberInfo.getEmail());
@@ -56,17 +64,7 @@ public class MemberInfoService implements UserDetailsService {
         }
     }
     
-    // 회원정보 수정(완료)
-    public Long updateMemberInfo(long longid, MemberInfoDTO memberInfoDTO) throws Exception{
-
-    	MemberInfo memberInfo = memberInfoRepository.findById(longid)
-                .orElseThrow(EntityNotFoundException::new);
-		memberInfo.updateMemberInfo(memberInfoDTO);
-		
-		return memberInfo.getLongid();
-    }
-    
-	public UserDetails loadUserByUsername(String Id) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String Id) throws UsernameNotFoundException {
         
 		MemberInfo member = memberInfoRepository.findById(Id);
 
