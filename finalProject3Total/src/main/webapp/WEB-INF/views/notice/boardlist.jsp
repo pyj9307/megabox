@@ -178,7 +178,9 @@ li.a {
 								<td>
 									<div class="purple large">
 										<button type="button" ng-click="ctrl.edit(boardlist.id)" class="button" style="height: 26px; line-height: 26px;">
-											<a href="/boardlist2" title="게시판으로 이동">수정하기</a>
+											{{boardlist.id}}
+										<button type="button"  ng-click="ctrl.edit(boardlist.id)" class="button purple" style="height: 26px; line-height: 26px;">조회</button>
+											 <a href="/boardlist2/{{boardlist.id}}" title="게시판으로 이동">수정하기</a>
 											</button>
 									</div>
 									<dd class="title">

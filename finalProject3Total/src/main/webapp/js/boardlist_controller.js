@@ -142,10 +142,11 @@ App.controller('BoardlistController', ['$scope', 'BoardlistService',
 
 		self.edit = function(id) {
 
-
+			console.log("test1");
 			console.log('[controller:edit]', id);
 
 			console.log("3333", self.page);
+			console.log("test2");
 
 			for (var i = 0; i < self.page.content.length; i++) {
 
